@@ -1,4 +1,4 @@
-FROM amazonlinux:2023 AS builder
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023 AS builder
 
 ARG RUBY_VERSION=3.4.5
 ARG RUBY_MAJOR=3.4
@@ -71,7 +71,7 @@ RUN chown -R ruby:ruby ${RUBY_PREFIX} && \
 # Final stage
 #
 ###############################################################################
-FROM amazonlinux:2023
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023-minimal
 
 ARG RUBY_VERSION=3.4.5
 ARG RUBY_MAJOR=3.4
