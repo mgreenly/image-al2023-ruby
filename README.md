@@ -4,6 +4,7 @@ An simple Dockerfile to build ruby from source on AL2023.
 
 ## make help
 
+````
 Available targets:
   build  - Build the Docker image (default)
   run    - Run the Docker container interactively
@@ -22,3 +23,4 @@ Examples:
   make                                    # Build with default Ruby 3.4.5 at /opt/ruby/3.4
   make RUBY_VERSION=3.3.6 RUBY_MAJOR=3.3  # Build with Ruby 3.3.6 at /opt/ruby/3.3
   make RUBY_PREFIX=/usr/local             # Install Ruby to /usr/local
+```
