@@ -8,6 +8,7 @@ RUBY_PREFIX ?= /opt/ruby/$(RUBY_MAJOR)
 RUBYGEMS_VERSION ?= 3.7.2
 BUNDLER_VERSION ?= 2.7.2
 GEM_SOURCE ?= https://rubygems.org
+WORKDIR ?= /opt/approot
 
 # Default target
 .DEFAULT_GOAL := build
@@ -22,6 +23,7 @@ build:
 		--build-arg RUBYGEMS_VERSION=$(RUBYGEMS_VERSION) \
 		--build-arg BUNDLER_VERSION=$(BUNDLER_VERSION) \
 		--build-arg GEM_SOURCE=$(GEM_SOURCE) \
+		--build-arg WORKDIR=$(WORKDIR) \
 		-t $(IMAGE_NAME):$(RUBY_VERSION) \
 		-t $(IMAGE_NAME):$(RUBY_MAJOR) \
 		-t $(IMAGE_NAME):latest \
@@ -52,6 +54,7 @@ help:
 	@echo "  BUNDLER_VERSION  - Bundler version to install (default: $(BUNDLER_VERSION))"
 	@echo "  RUBY_PREFIX      - Installation directory (default: $(RUBY_PREFIX))"
 	@echo "  GEM_SOURCE       - RubyGems source URL (default: $(GEM_SOURCE))"
+	@echo "  WORKDIR          - Working directory in container (default: $(WORKDIR))"
 	@echo ""
 	@echo "Examples:"
 	@echo "  make                                    # Build with default Ruby 3.4.5 at /opt/ruby/3.4"

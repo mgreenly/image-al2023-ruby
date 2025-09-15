@@ -18,6 +18,7 @@ Build arguments:
   BUNDLER_VERSION  - Bundler version to install (default: 2.7.2)
   RUBY_PREFIX      - Installation directory (default: /opt/ruby/3.4)
   GEM_SOURCE       - RubyGems source URL (default: https://rubygems.org)
+  WORKDIR          - Working directory in container (default: /opt/approot)
 
 Examples:
   make                                    # Build with default Ruby 3.4.5 at /opt/ruby/3.4

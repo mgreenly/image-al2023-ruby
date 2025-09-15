@@ -76,6 +76,7 @@ FROM amazonlinux:2023
 ARG RUBY_VERSION=3.4.5
 ARG RUBY_MAJOR=3.4
 ARG RUBY_PREFIX=/opt/ruby/${RUBY_MAJOR}
+ARG WORKDIR=/opt/approot
 
 RUN dnf update -y && \
     dnf install -y \
@@ -99,11 +100,11 @@ COPY --from=builder --chown=ruby:ruby ${RUBY_PREFIX} ${RUBY_PREFIX}
 ENV PATH=${RUBY_PREFIX}/bin:$PATH
 
 # Set working directory
-WORKDIR /opt/approot
+WORKDIR ${WORKDIR}
 
 # Switch to ruby user and set environment
 USER ruby
-ENV HOME=/opt/approot \
+ENV HOME=${WORKDIR} \
     GEM_HOME=${RUBY_PREFIX}/lib/ruby/gems/${RUBY_MAJOR}.0
 
 CMD ["/bin/bash"]
