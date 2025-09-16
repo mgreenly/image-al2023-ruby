@@ -49,13 +49,13 @@ RUN cd /tmp && \
     make install && \
     rm -rf /tmp/ruby-*
 
-# install specified version `gem` command
+# install specified version of the `gem` command
 RUN ${RUBY_PREFIX}/bin/gem update --system ${RUBYGEMS_VERSION} --no-document
 
 # install specified version of the `bundler` command
 RUN ${RUBY_PREFIX}/bin/gem install bundler -v ${BUNDLER_VERSION} --no-document
 
-# Configure gem sources (remove default and add the specified source)
+# configure gem sources (remove default and add the specified source)
 RUN ${RUBY_PREFIX}/bin/gem sources --clear-all && \
     ${RUBY_PREFIX}/bin/gem sources --add ${GEM_SOURCE}
 
@@ -96,13 +96,13 @@ RUN dnf update -y && \
 
 COPY --from=builder --chown=ruby:ruby ${RUBY_PREFIX} ${RUBY_PREFIX}
 
-# Set PATH
+# set PATH
 ENV PATH=${RUBY_PREFIX}/bin:$PATH
 
-# Set working directory
+# set working directory
 WORKDIR ${WORKDIR}
 
-# Switch to ruby user and set environment
+# switch to ruby user and set environment
 USER ruby
 ENV HOME=${WORKDIR} \
     GEM_HOME=${RUBY_PREFIX}/lib/ruby/gems/${RUBY_MAJOR}.0
