@@ -60,7 +60,7 @@ RUN ${RUBY_PREFIX}/bin/gem sources --clear-all && \
     ${RUBY_PREFIX}/bin/gem sources --add ${GEM_SOURCE}
 
 # any user can navigate the directory structure and read files but only the
-# ruby user can modify anything or run executable files in the direcotry.
+# ruby user can modify anything or run executable files in the directory.
 RUN chown -R ruby:ruby ${RUBY_PREFIX} && \
     find ${RUBY_PREFIX} -type d -exec chmod 755 {} \; && \
     find ${RUBY_PREFIX} -type f -executable -exec chmod 744 {} \; && \
